@@ -38,7 +38,7 @@ module ActsAsTaggableOn
     # private
     def delimiter
       # Parse the quoted tags
-      d = ActsAsTaggableOn.delimiter
+      d = ActsAsTaggableOn.delimiter || ","
       # Separate multiple delimiters by bitwise operator
       d = d.join('|') if d.kind_of?(Array)
       d

@@ -122,7 +122,9 @@ module ActsAsTaggableOn
       end
 
       def unicode_downcase(string)
-        if ActiveSupport::Multibyte::Unicode.respond_to?(:downcase)
+        if Rails.version >= "5.1"
+          string.downcase
+        elsif ActiveSupport::Multibyte::Unicode.respond_to?(:downcase)
           ActiveSupport::Multibyte::Unicode.downcase(string)
         else
           ActiveSupport::Multibyte::Chars.new(string).downcase.to_s
